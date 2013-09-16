@@ -1,0 +1,24 @@
+doctype 5
+html
+  head
+    title= title
+    link(rel='stylesheet', href='http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css')
+    link(rel='stylesheet', href='/css/style.css')
+    script(src='http://code.jquery.com/jquery-1.9.1.js')
+    script(src='http://code.jquery.com/ui/1.10.2/jquery-ui.js')
+    // PAS UTILE script(src='/js/jquery-ui-1.10.2/ui/jquery.ui.datepicker.js')
+  body
+    block content
+  script(type='text/javascript')
+    // code a passer ensuite dans un fichier !!!
+    $(function(){
+      $('#date').datepicker();
+    
+      $('#green').slider({
+        range: true,
+        min: 0,
+        max: 10,
+        values: [ 6.7, 10 ],
+        step: 0.1
+      });
+    });

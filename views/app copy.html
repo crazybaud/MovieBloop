@@ -1,0 +1,409 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap, from Twitter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MovieBox - find and order in one shot your top movies, sort by any fields (actors, release date, ratings, ...)">
+    <meta name="author" content="bibi">
+
+    <!-- Le styles -->
+    <link href="../public/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .my-date-inline {
+            display: inline-block;
+            width: 68px;
+      }
+      .my-date-inline-text {
+            display: inline-block;
+            margin-bottom: 10px;
+            vertical-align: middle;
+            height: 20px;
+            padding: 4px 6px;
+            width:35px;
+            text-align:right;
+      }
+      @media (max-width: 980px) {
+        /* Enable use of floated navbar text */
+        .navbar-text.pull-right {
+          float: none;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+      }
+    </style>
+    <link href="../public/css/bootstrap-responsive.css" rel="stylesheet">
+    <!-- FOR datepicker -->
+    <link href="../public/css/datepicker.css" rel="stylesheet">
+    <!-- FOR slide -->
+    <link href="../public/css/jquery-ui.css" rel="stylesheet">
+    <link href="../public/css/style.css" rel="stylesheet">
+    <!-- FOR datatable fuelux
+    <link href="../public/css/fuelux-responsive.css" rel="stylesheet"> -->
+	<!-- FOR datatable -->
+		<style type="text/css" title="currentStyle">
+			@import "../public/css/dataTables_demo_page.css";
+			@import "../public/css/dataTables_demo_table.css";
+		</style>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">MovieBox, open our data !</a>
+          <!--<div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>--><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span2">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <!--<form id="search-form">-->
+                <li class="nav-header">Release date</li>
+                  <li><div class="my-date-inline-text">From </div>
+                    <input type="text" value="2008" class="datepickerstart my-date-inline"></li>
+                  <li><div class="my-date-inline-text">To </div>
+                    <input type="text" value="2012" class="datepickerend my-date-inline"></li>
+                <li class="nav-header">IMDB Score</li>
+                  <li><div id="note-slide-green" style="font-size: 70%;"></div></li>
+                  <li><div id="note-range" style="margin-top:5px;width:100%;text-align:center;">From 6.7 to 10</div></li>
+                <li class="nav-header">Participants</li>
+                  <li><a href="#">Add person</a></li>
+                  <li>&nbsp;</li>
+                <li><button id="search-button" class="btn btn-block btn-primary" type="text">Launch search</button></li>
+              <!--</form>-->
+            </ul>
+          </div><!--/.well -->
+        </div>
+        <div class="span8">
+          <div class="well" style="height:100%">
+        		<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+                	<thead>
+                		<tr>
+                			<th width="70%">Title</th>
+                			<th width="10%">Year</th>
+                			<th width="10%">Note</th>
+                			<th width="10%">Voters</th>
+                		</tr>
+                	</thead>
+                	<tbody>
+                		
+                	</tbody>
+                </table>
+        		<!-- <table id="MyStretchGrid" class="table table-bordered datagrid">
+        			<thead>
+        			<tr>
+        				<th>
+        					<span class="datagrid-header-title">Geographic Data Sample</span>
+        
+        					<div class="datagrid-header-left">
+        						<div class="input-append search datagrid-search">
+        							<input type="text" class="input-medium" placeholder="Search">
+        							<button class="btn"><i class="icon-search"></i></button>
+        						</div>
+        					</div>
+        					<div class="datagrid-header-right">
+        						<div class="select filter" data-resize="auto">
+        							<button data-toggle="dropdown" class="btn dropdown-toggle">
+        								<span class="dropdown-label"></span>
+        								<span class="caret"></span>
+        							</button>
+        							<ul class="dropdown-menu">
+        								<li data-value="all" data-selected="true"><a href="#">All</a></li>
+        								<li data-value="lt5m"><a href="#">Population &lt; 5M</a></li>
+        								<li data-value="gte5m"><a href="#">Population &gt;= 5M</a></li>
+        							</ul>
+        						</div>
+        					</div>
+        				</th>
+        			</tr>
+        			</thead>
+        
+        			<tfoot>
+        			<tr>
+        				<th>
+        					<div class="datagrid-footer-left" style="display:none;">
+        						<div class="grid-controls">
+        							<span>
+        								<span class="grid-start"></span> -
+        								<span class="grid-end"></span> of
+        								<span class="grid-count"></span>
+        							</span>
+        							<div class="select grid-pagesize" data-resize="auto">
+        								<button data-toggle="dropdown" class="btn dropdown-toggle">
+        									<span class="dropdown-label"></span>
+        									<span class="caret"></span>
+        								</button>
+        								<ul class="dropdown-menu">
+        									<li data-value="5" data-selected="true"><a href="#">5</a></li>
+        									<li data-value="10"><a href="#">10</a></li>
+        									<li data-value="20"><a href="#">20</a></li>
+        									<li data-value="50"><a href="#">50</a></li>
+        									<li data-value="100"><a href="#">100</a></li>
+        								</ul>
+        							</div>
+        							<span>Per Page</span>
+        						</div>
+        					</div>
+        					<div class="datagrid-footer-right" style="display:none;">
+        						<div class="grid-pager">
+        							<button type="button" class="btn grid-prevpage"><i class="icon-chevron-left"></i></button>
+        							<span>Page</span>
+        
+        							<div class="input-append dropdown combobox">
+        								<input class="span1" type="text">
+        								<button class="btn" data-toggle="dropdown"><i class="caret"></i></button>
+        								<ul class="dropdown-menu"></ul>
+        							</div>
+        							<span>of <span class="grid-pages"></span></span>
+        							<button type="button" class="btn grid-nextpage"><i class="icon-chevron-right"></i></button>
+        						</div>
+        					</div>
+        				</th>
+        			</tr>
+        			</tfoot>
+        		</table> -->
+                <!-- 
+            <div id="search-result-table"></div>
+            <div id="search-result-table-t"></div> 
+            -->
+          </div>
+        </div>
+        <div class="span2">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">At theater</li>
+              <li><a href="#">Allocine</a></li>
+              <li class="nav-header">Order DVD</li>
+              <li><a href="#">Amazon</a></li>
+              <li><a href="#">FNAC</a></li>
+              <li class="nav-header">Export</li>
+              <li><a href="#">to .xls</a></li>
+              <li><a href="#">to .csv</a></li>
+            </ul>
+          </div><!--/.well -->
+        </div>
+      </div>
+      <hr>
+      <footer>
+        <p>&copy; MovieBox 2013</p>
+      </footer>
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../public/js/jquery-1.9.1.js"></script>
+    <script src="../public/js/jquery-ui.js"></script>
+    <script src="../public/js/bootstrap.min.js"></script>
+    <script src="../public/js/bootstrap-datepicker.js"></script>
+    <!--<script src="../public/js/fuelux.js"></script>-->
+    <script src="../public/js/datatable.js"></script>
+    <script src="../public/js/require.js"></script>
+    
+    <script>
+
+
+$(function(){
+/*		requirejs.config({
+			paths: {
+				'jquery': '../public/js/jquery-1.9.1',
+				'jquery-ui': '../public/js/jquery-ui',
+				'underscore': '../public/js/underscore',
+				'bootstrap': '../public/js/bootstrap.min',
+				'bootstrap-datepicker': '../public/js/bootstrap-datepicker',
+				'bootstrap-transition': '../public/js/bootstrap-transition',
+				'fuelux': '../public/js/fuelux'
+			}
+		});
+		require(['jquery','bootstrap-transition', 'fuelux','jquery-ui','bootstrap-datepicker'], function ($, sampleData, StaticDataSource, DataSourceTree) {
+		*/
+    'use strict';
+    var Utils = {
+		store: function (namespace, data) {
+			if (arguments.length > 1) {
+				return localStorage.setItem(namespace, JSON.stringify(data));
+			} else {
+				var store = localStorage.getItem(namespace);
+				return (store && JSON.parse(store)) || [];
+			}
+		}
+	};
+
+    var App = {
+        init: function(){
+            this.movies = Utils.store('movies');
+            $('.datepickerstart')
+              .datepicker({format: 'yyyy'})
+              .on('changeDate', function(ev){
+                  console.log("new start date:"+ev.date.valueOf());
+                  $('.datepickerstart').datepicker('hide');
+                });
+            $('.datepickerend')
+              .datepicker({format: 'yyyy'})
+              .on('changeDate', function(ev){
+                  console.log("new en date:"+ev.date.valueOf());
+                  $('.datepickerend').datepicker('hide');
+                });
+            $('#note-slide-green')
+              .slider({
+                range: true,
+                min: 0,
+                max: 10,
+                values: [ 6.7, 10 ],
+                step: 0.1,
+                slide: function(event, ui) {
+                  $("#note-range").html("From "+ ui.values[0] + " to " + ui.values[1]);
+                },
+                change: function(event, ui) {
+                  console.log( "The value has changed from "+ ui.values[0] + " to " + ui.values[1]);
+                }
+              });
+            $('#search-button')
+              .on('click', this.getResult);
+        },
+        getResult: function(e){
+            var searchData={
+                noteMin:$('#note-slide-green').slider('values',0),
+                noteMax:$('#note-slide-green').slider('values',1),
+                dateMin:$('.datepickerstart').val(),
+                dateMax:$('.datepickerend').val()
+            };
+            $('#search-button').html("Loading ...")
+                .addClass("btn-warning")
+                .removeClass("btn-primary");
+            $.ajax({
+                url: 'http://127.0.0.1:3000/search',
+                type: "POST",
+                data: JSON.stringify(searchData),
+                contentType: "application/json; charset=utf-8", 
+                dataType: 'json',
+                success: App.updateResult,
+                error: function(jqXHR,status,eT) {
+                    try
+                    {
+                      console.log("POST request error :"+jqXHR.responseText);
+                      App.updateResult(jqXHR.responseText,status,jqXHR);
+                    }
+                    catch(e)
+                    {
+                      console.log("POST /search failed, sendedData="+JSON.stringify(searchData));
+                      $('#search-button')
+                        .html("Come back later.")
+                        .addClass("btn-danger").removeClass("btn-warning");
+                    }
+                }
+            }); 
+            // this.movies = Utils.store('movies');
+        },
+        updateResult: function(data,status,jqXHR) {
+            console.log( "POST /search data="+status+JSON.stringify(data));
+            // alert(jqXHR.responseText);
+            //$('#search-result-table-t').html(jqXHR.responseText);
+            // this.movies = Utils.store('movies',JSON.parse(jqXHR.responseText));
+            // for(var i in localStorage) { console.log(localStorage[i]);}
+
+            // var jsonObject = JSON.parse(jqXHR.responseText);
+            
+            //fuelux $('#search-result-table').datagrid({ dataSource: jsonObject, stretchHeight: true });
+            $('#example').dataTable({
+                "bProcessing": true,
+                "aaData": JSON.parse(jqXHR.responseText),
+                "aoColumns": [
+                    { "mData": "title" },
+                    { "mData": "year" },
+                    { "mData": "note" },
+                    { "mData": "voters" }
+                ]
+            });
+            $('#search-button').html("Search again").addClass("btn-success").removeClass("btn-warning");
+          }
+    };
+    
+    App.init();
+});
+    // DATAGRID
+    /*
+		var dataSource = new StaticDataSource({
+			columns: [
+				{
+					property: 'toponymName',
+					label: 'Name',
+					sortable: true
+				},
+				{
+					property: 'countrycode',
+					label: 'Country',
+					sortable: true
+				},
+				{
+					property: 'population',
+					label: 'Population',
+					sortable: true
+				},
+				{
+					property: 'fcodeName',
+					label: 'Type',
+					sortable: true
+				}
+			],
+			data: sampleData.geonames,
+			delay: 250
+		});
+
+		$('#MyStretchGrid').datagrid({
+			dataSource: dataSource,
+			stretchHeight: true
+		});*/
+    /*
+            [
+                        {"distrib":"0000000016","voters":296024,"note":9,"title":"\"Game of Thrones\"","year":2011,"_id":"516cb3fdd21410841300ce49"},
+                        {"distrib":"0000000008","voters":43420,"note":9,"title":"\"Leyla ile Mecnun\"","year":2011,"_id":"516cb419d214108413013b56"},
+                        {"distrib":"1000000025","voters":6783,"note":9,"title":"\"Life\"","year":2009,"_id":"516cb419d214108413013d73"},
+                        {"distrib":"0000000026","voters":135897,"note":9,"title":"\"Sherlock\"","year":2010,"_id":"516cb43dd21410841301d582"},
+                        {"distrib":"0000000017","voters":7261,"note":9,"title":"\"Sherlock\"","year":2010,"_id":"516cb43dd21410841301d583"},
+                        {"distrib":"0000000017","voters":6115,"note":9,"title":"\"Sherlock\"","year":2010,"_id":"516cb43dd21410841301d588"}]
+            
+            [
+            {"0000000016",296024,9,"\"Game of Thrones\"",2011},
+            {"0000000008",43420,9,"\"Leyla ile Mecnun\"",2011},
+            {"1000000025",6783,9,"Life",2009}],              
+*/
+    //console.log("tout roule");
+    //jQuery.ajaxSetup()
+    /*
+                $.post('http://127.0.0.1:3000/search',JSON.stringify(searchData)+"\n", function(data,status) {
+                     console.log( "POST /search OK data="+status+JSON.stringify(data));
+                     $('#search-button').val("Search again ?").addClass("btn-success").removeClass("btn-warning");
+                }).fail(function() { console.log("POST /search failed, data="+JSON.stringify(searchData)); });
+                */
+    </script>
+  </body>
+
+
+</html>

@@ -1,0 +1,41 @@
+{
+  "name": "MovieBloop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MovieBloop is an advanced searching tool for movie database, you can import IMDB database. For example, which movies are starring Marion Cotillard and Jean Dujardin, after 1995, in DVD edition ?",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/crazybaud/MovieBloop.git"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "commander": ">=1.1.1",
+    "ejs": ">=0.8.3",
+    "express": ">=3.1.2",
+    "ezcrypto": ">=0.0.3",
+    "jade": ">=0.29.0",
+    "mongojs": ">=0.7.4"
+    "jquery": ">=1.8.3"
+    "jsftp": ">=0.5.9",
+    "mongodb": ">=1.2.14",
+  	"shelljs": ">=0.1.2",
+  },
+  "keywords": [
+    "IMDB",
+    "movie",
+    "search",
+    "tools",
+    "nodejs",
+    "mongodb",
+    "jquery"
+  ],
+  "author": "CrazyBaud",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/crazybaud/MovieBloop/issues"
+  }
+}
