@@ -4,7 +4,7 @@ MovieBloop is an advanced searching tool for movie database, you can import IMDB
 
 Version
 -------
-0.1 - Initial commit. **Only search by date interval and score interval functionalities are implemented.** Need to import other files now.
+ - 0.1 - Initial commit. **Only search by date interval and score interval functionalities are implemented.** Need to import other files now.
 
 Aim
 ----------
