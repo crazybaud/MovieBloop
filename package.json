@@ -22,7 +22,7 @@
     "jquery": ">=1.8.3"
     "jsftp": ">=0.5.9",
     "mongodb": ">=1.2.14",
-  	"shelljs": ">=0.1.2",
+  	"shelljs": ">=0.1.2"
   },
   "keywords": [
     "IMDB",
