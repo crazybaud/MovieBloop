@@ -1,6 +1,6 @@
 Description
 ----------
-MovieBloop is an advanced searching tool for movie database, you can import IMDB database. For example, which movies are starring Marion Cotillard and Jean Dujardin, after 1995, in DVD edition ?  
+MovieBloop is an advanced searching tool for movie database, you can import IMDB database. For example, which movies are starring Marion Cotillard and Jean Dujardin, after 1995, in DVD edition ? Main goal is to mix search parameters as much as we can.  
 
 Version
 -------
@@ -23,14 +23,17 @@ Installation
 	# Install nodejs
 	# Install mongodb, and configure it on 127.0.0.1 with no password, default mongodb port.
 	git clone git://github.com/crazybaud/MovieBloop.git 
+	cd MovieBloop
 	npm install
 	# Download text files from http://www.imdb.com/interfaces (only ratings file in 0.1)
 	# Unzip files
+	# Convert IMDB files to UTF8
+	iconv -f WINDOWS-1252 -t utf-8  -o ratings.list.utf8  ratings.list
 	# Import files to mongodb with
-	node importFromFilesToDB.js /path/to/ratings.list
+	node importFromFilesToDB.js /path/to/ratings.list.utf8
 	node app.js
 	firefox http://127.0.0.1:1891/
 
 License
 -------
-This source code is provided under MIT License. You need to read IMDB legal notice before using their data as a source (i.e. you can use it only for your personal use, mainly).
+This source code is provided under MIT License. You need to read IMDB legal notice before using their data as a source. Using this library for anything other than limited personal use may not be permitted by IMDB.
