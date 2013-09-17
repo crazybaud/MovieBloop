@@ -13,6 +13,7 @@ To learn Node.js + jQuery + MongoDB + GitHub. Next step are :
 - To add flat design
 - To use Neo4j database paradigm
 - Clean code
+
 Feel free to continue this project on your own, and to commit change if you want.
 
 Installation
