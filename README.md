@@ -4,7 +4,7 @@ MovieBloop is an advanced searching tool for movie database, you can import IMDB
 
 Version
 -------
-0.1 Initial commit. **Only search by date interval and score interval functionalities are implemented.** Need to import other files now.
+0.1 - Initial commit. **Only search by date interval and score interval functionalities are implemented.** Need to import other files now.
 
 Aim
 ----------
@@ -28,7 +28,7 @@ Installation
 	# Download text files from http://www.imdb.com/interfaces (only ratings file in 0.1)
 	# Unzip files
 	# Convert IMDB files to UTF8
-	iconv -f WINDOWS-1252 -t utf-8  -o ratings.list.utf8  ratings.list
+	iconv -f WINDOWS-1252 -t utf-8 -o ratings.list.utf8  ratings.list
 	# Import files to mongodb with
 	node importFromFilesToDB.js /path/to/ratings.list.utf8
 	node app.js
